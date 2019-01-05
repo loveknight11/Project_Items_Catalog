@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+<div class="container-fluid text-center">
+	<h1 class="text-center">Add New Category</h1>
+	<form action="#" method="POST" class="form-inline col-md-8 col-md-offset-3 text-center m-auto border border-primary">
+		<input type="text" name="name" placeholder="Category Name" class="form-control m-2 p-2 col-12">
+		<input type="submit" value="Add" class="btn btn-primary m-auto p-2">
+	</form>
+</div>
+{% endblock %}

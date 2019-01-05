@@ -1,0 +1,13 @@
+<header class="header">
+	<div class="text-box">
+		<h1 class="heading-primary">
+			<a href="{{url_for('showMain')}}" class="text-light"><span class="heading-primary-main">Project Items Catalog</span></a>
+			<span class="heading-primary-sub">Udacity Full Stack Nanodegree</span>
+		</h1>
+		{% if 'username' not in session %}
+		<a href="{{url_for('showLogin')}}" class="btn btn-white btn-animated">Login</a>
+		{% else %}
+		<a href="{{url_for('disconnect')}}" class="btn btn-white btn-animated">Logout</a>
+		{% endif %}
+	</div>
+</header>

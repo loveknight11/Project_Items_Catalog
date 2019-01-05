@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+
+		<div class="container col-sm-4 text-center border border-info rounded">
+			{% if 'username' in session %}
+			<a href="{{url_for('addCategory')}}"><h3>Add New Category</h3></a>
+			{% endif %}
+			<h1>Categories</h1>
+			{% for category in categories %}
+				<a href="{{url_for('showCategory', category = category.name)}}" class="text-info">
+					<h3>{{category.name}}</h3></a>
+			{% endfor %}
+		</div>
+		<div class="container col-sm-8 text-center border border-info rounded">
+			{% if 'username' in session %}
+			<a href="{{url_for('addItem')}}"><h3>Add New Item</h3></a>
+			{% endif %}
+			<h1>Latest Items</h1>
+			{% for item in items %}
+				<a href="{{url_for('showItem', item_id = item.id)}}" class="text-info">
+					<h3>{{item.name}}<small>({{item.category}})</small></h3>
+				</a>
+			{% endfor %}
+		</div>
+{% endblock %}

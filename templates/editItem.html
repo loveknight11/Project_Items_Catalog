@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+	<h1>Edit Item {{item.name}}</h1>
+	<form action="#" method="POST" enctype="multipart/form-data" class="form-inline mt-2">
+		<label for="name" class="col-md-3 mt-2">Name</label>
+		<input type="text" name="name" id="name" value="{{item.name}}" class="form-control col-md-9 mt-2">
+		<label for="description" class="col-md-3 mt-2">Description:</label>
+		<textarea class="form-control col-md-9 mt-2" rows="5" id="description" name="description">{{item.description}}</textarea>
+		<label for="pic" class="col-md-3 mt-2">Picture</label>
+		<img src="{{url_for('static', filename=item.picture)}}" alt="Item Picture" class="rounded-circle img-item form-control mt-2" id="pic">
+		<label for="picture" class="col-md-2 mt-2">Upload New Picture</label>
+		<input type="file" name="picture" id="picture" accept="image/*" class="form-control col-md-5 mt-2">
+		<label for="category" class="col-md-3 mt-2">Category</label>
+		<select name="category" class="form-control col-md-9 mt-2">
+			{% for cat in categories %}
+				<option value="{{cat.name}}" {% if item.category == cat.name %} selected {% endif %}>{{cat.name}}</option>
+			{% endfor %}
+		</select>
+		<div class="col-md-5 mt-2"></div>
+		<input type="submit" value="Edit" class="btn btn-primary col-md-2 mt-2">
+	</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+	<div class="container-fluid text-center">
+		<h1 class="col-md-12">{{item.name}}</h1><br>
+		<p class="col-md-12 p-3 lead text-primary">{{item.description}}</p><br>
+		<img src="{{url_for('static', filename=item.picture)}}" alt="Item Picture" class="rounded-circle mx-auto d-block img-fluid">
+		<div class="col-md-9"></div>
+		<div class="col-md-2"></div>
+		{% if 'username' in session and session['username'] == item.user_id %}
+		<a href="{{url_for('editItem', item_id = item.id)}}" class="col-md-2">Edit</a>&nbsp&nbsp
+		<a href="{{url_for('deleteItem', item_id = item.id)}}" class="col-md-2">Delete</a>
+		{% endif %}
+	</div>
+{% endblock %}

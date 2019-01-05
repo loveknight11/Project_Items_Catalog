@@ -1,0 +1,9 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+	<form method="POST" class="form-inline">
+		<h1 class="text-warning">Confirm to delete {{item.name}}
+		</h1>
+		<input type="submit" value="Delete">
+	</form>
+{% endblock %}
