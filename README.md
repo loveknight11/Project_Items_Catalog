@@ -24,6 +24,8 @@ Source code for Item catalog
 	* [get all items details](http://localhost:5000/items/json)
 	* [get a certain item details](http://localhost:5000/items/item_id/json)
 	* [get the full catalog details](http://localhost:5000/catalog/json)
+* you should provide **client_secrets.json** containing your **Client_id** and **Client_Secret** from [google](https://www.google.com).
+* you should provide **fb_client_secrets.json** containing your **app_id** and **app_sercret** from [facebook](https://www.facebook.com).
 
 ## Requirements
 * install python on your machine.
