@@ -1,7 +1,8 @@
+
 from flask import Flask, render_template, request, url_for, redirect
 from flask import make_response, g, jsonify
 from flask import session as login_session
-from flask.ext.httpauth import HTTPBasicAuth
+from flask_httpauth import HTTPBasicAuth
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, joinedload
 from models import Base, Categories, Items, Users
@@ -16,17 +17,18 @@ from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
 
 auth = HTTPBasicAuth()
 app = Flask(__name__)
-engine = create_engine('sqlite:///catalog.db')
+engine = create_engine('sqlite:////var/www/FlaskApp/FlaskApp/catalog.db',
+                       connect_args={'check_same_thread': False})
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
-UPLOAD_FOLDER = os.getcwd() + "/static/"
+UPLOAD_FOLDER = "/var/www/FlaskApp/FlaskApp/static/"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 APPLICATION_NAME = "Catalog"
 CLIENT_ID = json.loads(
-    open('client_secrets.json', 'r').read())['web']['client_id']
+    open('/var/www/FlaskApp/FlaskApp/client_secrets.json', 'r').read())['web']['client_id']
 
 
 # verify username and password or token
@@ -536,5 +538,6 @@ def getUserInfo(user_id):
 if __name__ == '__main__':
     app.secret_key = ''.join(random.choice(string.ascii_uppercase +
                              string.digits) for x in xrange(32))  # noqa
-    #app.debug = True
+    app.debug = True
     app.run()
+
