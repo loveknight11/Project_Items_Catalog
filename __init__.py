@@ -17,18 +17,18 @@ from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
 
 auth = HTTPBasicAuth()
 app = Flask(__name__)
-engine = create_engine('sqlite:////var/www/FlaskApp/FlaskApp/catalog.db',
+engine = create_engine('sqlite:////var/www/AlhussinyApp/AlhussinyApp/catalog.db',
                        connect_args={'check_same_thread': False})
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
-UPLOAD_FOLDER = "/var/www/FlaskApp/FlaskApp/static/"
+UPLOAD_FOLDER = "/var/www/AlhussinyApp/AlhussinyApp/static/"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 APPLICATION_NAME = "Catalog"
 CLIENT_ID = json.loads(
-    open('/var/www/FlaskApp/FlaskApp/client_secrets.json', 'r').read())['web']['client_id']
+    open('/var/www/AlhussinyApp/AlhussinyApp/client_secrets.json', 'r').read())['web']['client_id']
 
 
 # verify username and password or token
